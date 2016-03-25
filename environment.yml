@@ -2,6 +2,7 @@ name: live_terminal
 channels:
   - IOOS
 dependencies:
+    - flask
     - ipython
     - pandas
     - python=3.4
