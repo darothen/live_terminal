@@ -1,0 +1,8 @@
+name: live_terminal
+channels:
+  - IOOS
+dependencies:
+    - ipython
+    - pandas
+    - python=3.4
+    - requests
