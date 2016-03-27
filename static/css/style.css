@@ -10,11 +10,10 @@ body {
 }
 
 .x.axis path {
-  display: none;
 }
 
 .line {
   fill: none;
-  stroke: steelblue;
-  stroke-width: 1.5px;
+  stroke: darkred;
+  stroke-width: 2.5px;
 }

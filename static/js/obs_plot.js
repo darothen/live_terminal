@@ -54,13 +54,17 @@ d3.csv('data/test_obs.csv', get_temps, function(data) {
     );
 
     // Construct actual plot line elements
+    // 1) x-axis
     svg.append("g")
-        .call(xAxis);
+        .attr("class", "x axis") // CSS selector
+        .attr("transform", "translate(0," + height + ")") // move to bottom of plot
+        .call(xAxis); // add the x-axis
     svg.append("g")
+        .attr("class", "y axis") // CSS selector
         .call(yAxis);
     svg.append("path")
-        .datum(data)
-        .attr("class", "line")
+        .datum(data) // Bind data to plot path elements
+        .attr("class", "line") // CSS selector
         .attr("d", line);
 
 });
