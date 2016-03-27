@@ -8,12 +8,30 @@ body {
   stroke: #000;
   shape-rendering: crispEdges;
 }
+.axislabel {
+    text-anchor: middle;
+    font-weight: bold,bold;
+    font-size: 12pt;
+}
 
 .x.axis path {
 }
 
 .line {
   fill: none;
-  stroke: darkred;
   stroke-width: 2.5px;
+}
+
+.dots {
+    fill: none;
+    stroke: black;
+    stroke-width: 1px;
+}
+.temp {
+    fill: orange;
+    stroke: orange;
+}
+.dwpt {
+    fill: teal;
+    stroke: teal;
 }
