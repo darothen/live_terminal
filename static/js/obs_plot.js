@@ -39,7 +39,8 @@ var svg = d3.select("#graph").append("svg")
                                       margin.top + ")");
 
 // Load data and map it to plot
-d3.csv('data/test_obs.csv', get_temps, function(data) {
+d3.csv('data/test_obs.csv', get_temps, function(error, data) {
+    if (error) throw error;
     console.log(data[0]);
 
     x.domain(
@@ -59,9 +60,11 @@ d3.csv('data/test_obs.csv', get_temps, function(data) {
         .attr("class", "x axis") // CSS selector
         .attr("transform", "translate(0," + height + ")") // move to bottom of plot
         .call(xAxis); // add the x-axis
+    // 2) y-axis
     svg.append("g")
         .attr("class", "y axis") // CSS selector
         .call(yAxis);
+    // 3) temperature plot
     svg.append("path")
         .datum(data) // Bind data to plot path elements
         .attr("class", "line") // CSS selector
@@ -70,10 +73,9 @@ d3.csv('data/test_obs.csv', get_temps, function(data) {
 });
 
 function get_temps(d) {
-    d.date = formatDateTime.parse(d.DateTime);
-    d.temperature = d.tempi;
     return {
         date: formatDateTime.parse(d.DateTime),
-        temp: +d.tempi
+        temp: +d.tempi,
+        dwpt: +d.dewpti
     };
 }
