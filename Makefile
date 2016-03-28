@@ -8,8 +8,16 @@ RESOURCES = conditions hourly
 $(foreach res, ${RESOURCES}, fetch_${res}): fetch_%: $(DATA_DIR)/${CITY}_${STATE}.%.json
 fetch_all: $(foreach res, $(RESOURCES), fetch_$(res))
 
+
 ${CITY}_${STATE}.%.json: fetch_wu_api
 	./fetch_wu_api ${API_KEY} $(notdir $*) ${CITY} ${STATE} $@
 
 clean_resources:
 	rm $(DATA_DIR)/*.json
+
+# Figure generation following svgcreator.node.js
+.PRECIOUS: %.svg %.png
+%.svg: %.js
+	node $^ > $@
+%.png: %.svg
+	convert $^ $@
